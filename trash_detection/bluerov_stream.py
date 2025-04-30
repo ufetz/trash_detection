@@ -6,6 +6,7 @@ BlueRov video capture class
 import cv2
 import gi
 import numpy as np
+import argparse
 
 gi.require_version('Gst', '1.0')
 from gi.repository import Gst
@@ -146,9 +147,12 @@ class Video():
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="BlueRov video capture script.")
+    parser.add_argument('--port', type=int, default=5600, help='UDP port for video stream')
+    args = parser.parse_args()
+
     # Create the video object
-    # Add port= if is necessary to use a different one
-    video = Video()
+    video = Video(port=args.port)
 
     print('Initialising stream...')
     waited = 0
