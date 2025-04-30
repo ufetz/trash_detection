@@ -2,4 +2,4 @@
 
 Python code to detect trash objects underwater using YOLO.
 
-![image](example.png "asdf")
+![image](misc/example.png "asdf")
