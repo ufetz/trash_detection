@@ -8,6 +8,8 @@ Python code to detect trash objects underwater using YOLO.
 
 Parse arguments when using CLI:
 ```console
-foo@bar:~$ python3 yolo.py --port=5601
-foo@bar:~$ python3 yolo.py --model=yolov8n
+foo@bar:~$ python3 trash_detection/yolo.py --port=5601
+```
+```console
+foo@bar:~$ python3 trash_detection/yolo.py --model=yolov8n
 ```
