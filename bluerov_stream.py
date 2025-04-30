@@ -25,7 +25,7 @@ class Video():
         latest_frame (np.ndarray): Latest retrieved video frame
     """
 
-    def __init__(self, port=5601):
+    def __init__(self, port=5600):
         """Summary
 
         Args:
@@ -42,7 +42,8 @@ class Video():
         self.video_source = 'udpsrc port={}'.format(self.port)
         # [Rasp raw image](http://picamera.readthedocs.io/en/release-0.7/recipes2.html#raw-image-capture-yuv-format)
         # Cam -> CSI-2 -> H264 Raw (YUV 4-4-4 (12bits) I420)
-        self.video_codec = '! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! avdec_h264'
+        #self.video_codec = '! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! avdec_h264'
+        self.video_codec = '! application/x-rtp, payload=96 ! rtph264depay ! h264parse ! openh264dec'
         # Python don't have nibble, convert YUV nibbles (4-4-4) to OpenCV standard BGR bytes (8-8-8)
         self.video_decode = \
             '! decodebin ! videoconvert ! video/x-raw,format=(string)BGR ! videoconvert'
