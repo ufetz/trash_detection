@@ -1,19 +1,26 @@
 #!/usr/bin/env python
 """
-BlueRov video capture class
+YOLO trash detection script.
 """
 
+import argparse
 import cv2
 from ultralytics import YOLO
 from bluerov_stream import Video
 
 
 if __name__ == '__main__':
-    # Create the video object
-    video = Video(port=5601)
+    parser = argparse.ArgumentParser(description="YOLO trash detection script.")
+    parser.add_argument('--port', type=int, default=5600, help='UDP port for video stream')
+    parser.add_argument('--model', type=str, default='yolo11l', help='Path to YOLO model weights')
+    args = parser.parse_args()
 
+    # Create the video object
+    video = Video(port=args.port)
+
+    model_str = 'model/' + args.model + '.pt'
     # YOLO model
-    model = YOLO('model/yolo11l.pt')
+    model = YOLO(model_str)
     #model = YOLO('runs/detect/train/weights/best.pt')
 
     print('Initialising stream...')
