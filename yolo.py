@@ -10,10 +10,10 @@ from bluerov_stream import Video
 
 if __name__ == '__main__':
     # Create the video object
-    # Add port= if is necessary to use a different one
     video = Video(port=5601)
-    #model = YOLO('yolov8n.pt')
-    model = YOLO('yolo11n.pt')
+
+    # YOLO model
+    model = YOLO('model/yolo11l.pt')
     #model = YOLO('runs/detect/train/weights/best.pt')
 
     print('Initialising stream...')
